@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Tasks </h1>
+    <% if(tasks) { %>
+    <% if(tasks.length == 0){ %> 
+        <p> No tasks yet.</p> <%} 
+    else { %> 
+    <% for(task of tasks){ %>
+    <div>
+        <from action = "/tasks/<%= task.id %>" method="post">
+            <input id = "completed <%=task.id%>" type = "checkbox" <%=task.completed ? "checked" : "" %> onchange="this.form.submit()">
+            <label for = "completed <%=task.id%>"><%= task.title %></label>
+        </from>
+    </div>
+    <% } %>
+    <% } %>
+    <% } %>
+</body>
+</html>
