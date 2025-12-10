@@ -1,0 +1,25 @@
+{
+  "name": "express-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayhanulmukul/EXPRESS-TODO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/rayhanulmukul/EXPRESS-TODO/issues"
+  },
+  "homepage": "https://github.com/rayhanulmukul/EXPRESS-TODO#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  }
+}
