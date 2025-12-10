@@ -38,9 +38,16 @@ app.post('/tasks/:id', (req, res) => {
     if (taskIndex === -1) {
         return res.status(404).send('Task not found');
     }
-    const { completed } = req.body;
-    console.log(completed);
-    tasks[taskIndex].completed = completed === 'on';
+    const { _method, completed } = req.body;
+    if (_method == 'PUT') {
+        tasks[taskIndex].completed = completed === 'on';
+    }
+    else if (_method == 'DELETE') {
+        tasks.splice(taskIndex, 1);
+    }
+    else {
+        return res.status(400).send('Invalid method');
+    }
     fs.writeFileSync('tasks.json', JSON.stringify(tasks, null, 2));
     res.redirect('/');
 });

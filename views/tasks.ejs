@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1> Tasks </h1>
     <% if(tasks) { %>
-    <% if(tasks.length == 0){ %> 
-        <p> No tasks yet.</p> <%} 
-    else { %> 
-    <% for(task of tasks){ %>
-    <div>
-        <form action = "/tasks/<%= task.id %>" method="post">
-            <input id = "completed-<%=task.id%>" type = "checkbox" name="completed" <%=task.completed ? "checked" : "" %> onchange="this.form.submit()">
-            <label for = "completed-<%=task.id%>"><%= task.title %></label>
-        </from>
-    </div>
-    <% } %>
-    <% } %>
-    <% } %>
+        <% if(tasks.length==0){ %>
+            <p> No tasks yet.</p>
+            <%} else { %>
+                <% for(task of tasks){ %>
+                    <div>
+                        <form action="/tasks/<%= task.id %>" method="post">
+                            <input type="hidden" name="_method" value="PUT">
+                            <input id="completed-<%=task.id%>" type="checkbox" name="completed" <%=task.completed
+                                ? "checked" : "" %> onchange="this.form.submit()">
+                            <label for="completed-<%=task.id%>">
+                                <%= task.title %>
+                            </label>
+                        </form>
+                        <form action="/tasks/<%= task.id %>" method="post" style="display:inline;">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                    <% } %>
+                        <% } %>
+                            <% } %>
 
-    <br>
-    <h2> Add a new task </h2>
-    <form action="/tasks" method="post">
-        <input type="text" id = "title" name="title" required>
-        <button type="submit">Add Task</button>
-    </form>
+                                <br>
+                                <h2> Add a new task </h2>
+                                <form action="/tasks" method="post">
+                                    <input type="text" id="title" name="title" required>
+                                    <button type="submit">Add Task</button>
+                                </form>
+                                
 
 </body>
+
 </html>
