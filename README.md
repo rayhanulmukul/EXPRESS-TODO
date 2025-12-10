@@ -34,4 +34,3 @@ Uses EJS as the templating engine
 Stores tasks in a JSON file (tasks.json)
 Runs with Node.js watch mode via npm start
 ES modules enabled ("type": "module")
->>>>>>> 765d1dbffe5f9ef61beb6c12da5ad2eb06649f7c
